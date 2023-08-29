@@ -1,0 +1,39 @@
+.sims-button-container{
+  display: flex;
+  justify-content: center;
+}
+
+.sims-button{
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 30px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: -webkit-transform 50ms;
+  transition: -webkit-transform 50ms;
+  transition: transform 50ms;
+  transition: transform 50ms, -webkit-transform 50ms;
+  margin: 10px 15px;
+  text-decoration: none;
+  font-size: 14px;
+}
+.sims-button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.025);
+  transform: scale(1.025)
+}
+.sims-button:active{
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9)
+}
+.sims-button{
+  background: #e0e0e0;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgb(224, 224, 224)), to(rgb(253, 253, 253)));
+  background: linear-gradient(0deg, rgb(224, 224, 224) 0%, rgb(253, 253, 253) 100%);
+  color: #1250ae;
+  font-weight: 500;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.5);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.5)
+}

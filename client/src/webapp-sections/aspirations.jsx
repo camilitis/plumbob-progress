@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Spinner } from "@nextui-org/react";
-import data from '../local-db/TheSimsDBcopy.json';
+import data from '../local-db/TheSimsDB.json';
 import { findPackIcon } from '../js/findPackIcon';
 import { db } from '../firebase-config';
 import { arrayUnion, doc, updateDoc, arrayRemove } from "firebase/firestore";
@@ -75,7 +75,6 @@ function Aspirations({ownedPacks, userId, packs}){
                 onClick={() => setCurrentAspiration(aspirationtype.name)}
                 key={index}
               >
-
               {
                 // console.log(completedAspirations.includes(aspirationtype.aspirations.name))
               }

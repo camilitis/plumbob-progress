@@ -6,6 +6,7 @@ import data from '../local-db/TheSimsDB.json';
 
 import Aspirations from "../webapp-sections/aspirations"
 import Skills from "../webapp-sections/skills"
+import Careers from "../webapp-sections/careers"
 
 function WebApp({userId}){
   const [ownedPacks, setOwnedPacks] = useState(null)
@@ -25,11 +26,13 @@ function WebApp({userId}){
     {
       userInfo ?
         <section className="webapp">
-          <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/>
+          {/* <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
 
-          <Aspirations ownedPacks={ownedPacks} userId={userId} packs={packs}/>
+          {/* <Aspirations ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
 
-          <Skills ownedPacks={ownedPacks} userId={userId} packs={packs}/>
+          {/* <Skills ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
+
+          <Careers ownedPacks={ownedPacks} userId={userId} packs={packs}/>
         </section>
       : <Spinner color="success" size="lg" style={{margin: "20px auto", display: "block", width: "100px", height: "50px"}}/>
     }

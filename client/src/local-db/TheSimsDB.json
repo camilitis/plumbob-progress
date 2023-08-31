@@ -3310,7 +3310,7 @@
                 "name":"Media Production",
                 "max_level": 5,
                 "pack": "Get Famous",
-                "icon":"./icons/skills/Skill_TS4_Media_Production.webp"
+                "icon":"./icons/skills/Skill_TS4_Media_production.webp"
             },
             "37":{
                 "name":"Research & Debate",

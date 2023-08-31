@@ -1,39 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Spinner, Tooltip } from "@nextui-org/react";
-import data from '../local-db/TheSimsDB.json';
-import { findPackIcon } from '../js/findPackIcon';
-import { db } from '../firebase-config';
-import { doc, setDoc } from "firebase/firestore";
-import AuthDetails from '../auth/authDetails';
-
 function Skills({ownedPacks, userId, packs}){
-  const [skills, setSkills] = useState(null)
-  const [ownedSkills, setOwnedSkills] = useState([])
-  const [skillsProgress, setSkillsProgress] = useState(null)
-
-  const { userInfo } = AuthDetails()
-  const ownedSkillsRef = doc(db, "users", userId)
-
-  useEffect(() => {
-    setSkills(Object.values(data["The-Sims4"]["Skills"]))
-
-    if(userInfo){setSkillsProgress(userInfo.skills_level)}
-  }, [userInfo])
-
-
-  useEffect(() => {
-    if(ownedPacks && skills){
-      const baseGameSkills = Object.values(skills).filter(skill => skill.pack === "Base Game")
-
-      const filteredSkills = [
-        ...baseGameSkills,
-        ...skills.filter(skill => ownedPacks.includes(skill.pack))
-      ]
-
-      setOwnedSkills(filteredSkills.sort((a, b) => a.name.localeCompare(b.name)))
-    }
-  }, [ownedPacks, skills])
-
 
   const updateSkillProgress = async (skillName) => {
     const skillToUpdate = skillsProgress[skillName]
@@ -89,24 +54,8 @@ function Skills({ownedPacks, userId, packs}){
                   <img src={skill.icon} alt={skill.name} 
                     className={(skillsProgress[skill.name] ? skillsProgress[skill.name] : 0) === skill.max_level ? "skill-complete skills-icon" : "skills-icon"}/>
 
-                  <div style={{display: "flex", flexDirection: "row"}} className="skills-name">
-                    <Tooltip key={index} content={skill.pack} placement="top">
-                      <div>
-                        {
-                          skill.pack !== "Base Game" ? <img src={findPackIcon(skill.pack, packs)} alt={skill.pack} className="skills-icon-pack"/> : null
-                        }
-                      </div>
-                    </Tooltip>
 
-                    {skill.name}
-                  </div>
 
-                    <div className="skill-bar">
-                        <div
-                          style={{ width: `${((skillsProgress[skill.name] ? skillsProgress[skill.name] : 0) / skill.max_level) * 100}%` }}
-                          className={(skillsProgress[skill.name] ? skillsProgress[skill.name] : 0) === skill.max_level ? "skill-complete fill-bar" : "skill-incomplete fill-bar"}
-                        ></div>
-                      </div>
 
                     <div 
                       className={(skillsProgress[skill.name] ? skillsProgress[skill.name] : 0) === skill.max_level ? "skill-complete skills-level" : "skills-level"}>

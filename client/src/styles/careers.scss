@@ -1,0 +1,118 @@
+$bg-blue: #B4C8E3;
+$border-green: #41AD51;
+$bg-green: #BCF2AD;
+$skill-green: #74C53C;
+$letter-blue: #1250AE;
+$bg-incomplete: #B3B3B3;
+$bg-title-blue: #98ABC6;
+$bg-grey: #E6E8EB;
+$skill-blue: #F0F3FD;
+$skill-complete: #FFCE56;
+
+.careers-container{
+  flex-direction: row;
+  background-color: $bg-incomplete;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.career-degree{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 5px;
+  color: $letter-blue;
+  font-weight: 400;
+  margin: 0px auto;
+  border: 3px solid $bg-incomplete;
+  box-sizing: content-box;
+  &:hover{
+    border: 3px solid $border-green;
+    box-sizing: content-box;
+    background-color: $bg-green;
+  }
+}
+
+.career{
+  width: calc(90vw / 2.9);
+  height: 90px;
+}
+.degree{
+  width: calc(90vw / 3.9);
+}
+
+
+.career-level-container{
+  display: grid;
+  grid-template-columns: .7fr 1.5fr 1.5fr 0.5fr;
+  grid-template-areas: 
+    "careericon careername careerbar careernumber";
+}
+
+.career-icon{
+  // width: 100%;
+  height: 90px;
+  background-color: $bg-grey;
+  padding: 5px;
+  border-radius: 5px 0px 0px 5px;
+  // grid-area: careericon;
+  margin: 0px;
+  &-pack{
+    width: 25px;
+    height: 25px;
+  }
+}
+.career-name{
+  grid-area: careername;
+  margin: auto 0px;
+  font-weight: 400;
+  img{
+    margin: 0px 5px;
+  }
+}
+.career-bar{
+  width: 150px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  grid-area: careerbar;
+  margin: auto;
+}
+.career-level{
+  background-color: $skill-blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0px 5px 5px 0px;
+  font-weight: 400;
+  grid-area: careernumber;
+}
+
+.career-branch-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  margin: auto 0px;
+}
+.career-branch{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: auto 0px;
+  justify-content: space-evenly;
+  img{
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.career-branch-icon{
+  background-color: $bg-grey;
+}
+.career-branch-name{
+  width: 100%;
+}

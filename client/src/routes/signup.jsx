@@ -37,7 +37,8 @@ function SignUp(){
         username: username,
         owned_packs: [],
         completed_aspirations: [],
-        skills_level: {}
+        skills_level: {},
+        careers_progress: {},
       })
 
       setLoading(false)

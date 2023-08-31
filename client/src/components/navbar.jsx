@@ -13,18 +13,25 @@ export default function NavBar({authUser, userInfo}){
 
   return(
     <header className="navbar">
-      <Link href="/" color="foreground" size="lg" underline="hover">
-        Plumbob Progress
-      </Link>
+      <div className="navbar-home">
+      </div>
+
+      <div className="navbar-title">
+        <Link href="/" color="foreground" size="lg" underline="hover">
+          Plumbob Progress
+        </Link>
+      </div>
 
       {
         authUser && userInfo ? 
-          <><p>{userInfo.username}</p>
-            <Button radius="full" size="lg" href="/" as={Link} onClick={userSignOut}>
+          <div className="navbar-user">
+            <p>{userInfo.username}</p>
+            <Button href="/" as={Link} onClick={userSignOut}>
               Sign Out
-            </Button></> 
+            </Button>
+          </div>
         :
-        <Button variant="flat" radius="full" size="lg" href="/signin" as={Link} style={{color: "white"}}>
+        <Button href="/signin" as={Link} style={{color: "white"}} className="navbar-user">
           Sign In
         </Button>
       }

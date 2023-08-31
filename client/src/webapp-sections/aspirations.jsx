@@ -69,22 +69,21 @@ function Aspirations({ownedPacks, userId, packs}){
           </div>
 
           <div className="aspirations-list">
-            {ownedAspirations.map((aspirationtype, index) => (
+            {ownedAspirations.map((aspirationtype, index) => {
+
+              return(
               <div
                 className={currentAspiration === aspirationtype.name ? "aspirations-list-item aspirations-list-item-current" : "aspirations-list-item aspirations-list-item-all"}
                 onClick={() => setCurrentAspiration(aspirationtype.name)}
                 key={index}
               >
-              {
-                // console.log(completedAspirations.includes(aspirationtype.aspirations.name))
-              }
                 <img src={aspirationtype.icon} alt={aspirationtype.name} />
 
                 <div className="aspirations-list-item-name">
                   {aspirationtype.name}
                 </div>
               </div>
-            ))}
+            )})}
           </div>
 
           <div className="aspirations-content">
@@ -97,6 +96,7 @@ function Aspirations({ownedPacks, userId, packs}){
                 return sortedAspirations.map((aspirationContent, index) => {
 
                   if(ownedPacks.includes(aspirationContent.pack) || aspirationContent.pack === "Base Game"){
+
                     return(
                       <div 
                         className={completedAspirations.includes(aspirationContent.name) ? "aspirations-content-item aspirations-content-item-complete" : "aspirations-content-item aspirations-content-item-incomplete"}

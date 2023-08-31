@@ -36,7 +36,8 @@ function SignUp(){
       await setDoc(doc(db, 'users', user.uid), {
         username: username,
         owned_packs: [],
-        completed_aspirations: []
+        completed_aspirations: [],
+        skills_level: {}
       })
 
       setLoading(false)

@@ -3093,350 +3093,300 @@
             "0":{
                 "name":"Charisma",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Charisma.webp"
             },
             "1":{
                 "name":"Comedy",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Comedy.webp"
             },
             "2":{
                 "name":"Cooking",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Cooking.webp"
             },
             "3":{
                 "name":"Fishing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Fishing.webp"
             },
             "4":{
                 "name":"Fitness",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Fitness.webp"
             },
             "5":{
                 "name":"Gardening",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Gardening.webp"
             },
             "6":{
                 "name":"Gourmet Cooking",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Gourmet_Cooking.webp"
             },
             "7":{
                 "name":"Guitar",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Guitar.webp"
             },
             "8":{
                 "name":"Handiness",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Handiness.webp"
             },
             "9":{
                 "name":"Logic",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Logic.webp"
             },
             "10":{
                 "name":"Mischief",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Mischief.webp"
             },
             "11":{
                 "name":"Mixology",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Mixology.webp"
             },
             "12":{
                 "name":"Painting",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Painting.webp"
             },
             "13":{
                 "name":"Piano",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Piano.webp"
             },
             "14":{
                 "name":"Photography",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Photography.webp"
             },
             "15":{
                 "name":"Programming",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Programming.webp"
             },
             "16":{
                 "name":"Rocket Science",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Rocket_Science.webp"
             },
             "17":{
                 "name":"Video Gaming",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Video_Gaming.webp"
             },
             "18":{
                 "name":"Violing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Violin.webp"
             },
             "19":{
                 "name":"Writing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Base Game",
                 "icon":"./icons/skills/Skill_TS4_Writing.webp"
             },
             "20":{
                 "name":"Herbalism",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Outdoor Retreat",
                 "icon":"./icons/skills/Skill_TS4_Herbalism.webp"
             },
             "21":{
                 "name":"Baking",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Get To Work",
                 "icon":"./icons/skills/Skill_TS4_Baking.webp"
             },
             "22":{
                 "name":"Wellness",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Spa Day",
                 "icon":"./icons/skills/Skill_TS4_Wellness.webp"
             },
             "23":{
                 "name":"Dancing",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Get Together",
                 "icon":"./icons/skills/Skill_TS4_Dancing.webp"
             },
             "24":{
                 "name":"DJ Mixing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Get Together",
                 "icon":"./icons/skills/Skill_TS4_DJ_Mixing.webp"
             },
             "25":{
                 "name":"Singing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "City Living",
                 "icon":"./icons/skills/Skill_TS4_Singing.webp"
             },
             "26":{
                 "name":"Pipe Organ",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Vampires",
                 "icon":"./icons/skills/Skill_TS4_Pipe_Organ.webp"
             },
             "27":{
                 "name":"Vampire Lore",
                 "max_level": 15,
-                "current_level":0,
                 "pack": "Vampires",
                 "icon":"./icons/skills/Skill_TS4_Vampire_Lore.webp"
             },
             "28":{
                 "name":"Bowling",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "City Living",
                 "icon":"./icons/skills/Skill_TS4_Bowling.webp"
             },
             "29":{
                 "name":"Parenting",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Parenthood",
                 "icon":"./icons/skills/Skill_TS4_Parenting.webp"
             },
             "30":{
                 "name":"Pet Training",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Cats & Dogs",
                 "icon":"./icons/skills/Skill_TS4_Pet_Training.webp"
             },
             "31":{
                 "name":"Veterinarian",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Cats & Dogs",
                 "icon":"./icons/skills/Skill_TS4_Veterinarian.webp"
             },
             "32":{
                 "name":"Archaeology",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Jungle Adventure",
                 "icon":"./icons/skills/Skill_TS4_Archaeology.webp"
             },
             "33":{
                 "name":"Selvadoradian Culture",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Jungle Adventure",
                 "icon":"./icons/skills/Skill_TS4_Selvadoradian_Culture.webp"
             },
             "34":{
                 "name":"Flower Arranging",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Seasons",
                 "icon":"../icons/skills/Skill_TS4_FlowerArranging.webp"
             },
             "35":{
                 "name":"Acting",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Get Famous",
                 "icon":"./icons/skills/Skill_TS4_Acting.webp"
             },
             "36":{
                 "name":"Media Production",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Get Famous",
                 "icon":"./icons/skills/Skill_TS4_Media_Production.webp"
             },
             "37":{
                 "name":"Research & Debate",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Discover University",
                 "icon":"./icons/skills/Skill_TS4_Research_&_Debate.webp"
             },
             "38":{
                 "name":"Robotics",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Discover University",
                 "icon":"./icons/skills/Skill_TS4_Robotics.webp"
             },
             "39":{
                 "name":"Fabrication",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Eco Lifestyle",
                 "icon":"./icons/skills/Skill_TS4_Fabrication.webp"
             },
             "40":{
                 "name":"Juice Fizzing",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Eco Lifestyle",
                 "icon":"./icons/skills/Skill_TS4_Juice_Fizzing.webp"
             },
             "41":{
                 "name":"Knitting",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Nifty Knitting",
                 "icon":"./icons/skills/Skill_TS4_Knitting.webp"
             },
             "42":{
                 "name":"Rock Climbing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Snowy Escape",
                 "icon":"./icons/skills/Skill_TS4_Rock_Climbing.webp"
             },
             "43":{
                 "name":"Skiing",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Snowy Escape",
                 "icon":"./icons/skills/Skill_TS4_Skiing.webp"
             },
             "44":{
                 "name":"Snowboarding",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Snowy Escape",
                 "icon":"./icons/skills/Skill_TS4_Snowboarding.webp"
             },
             "45":{
                 "name":"Medium",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Paranormal",
                 "icon":"./icons/skills/Skill_TS4_Medium.webp"
             },
             "46":{
                 "name":"Cross-Stitch",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Cottage Living",
                 "icon":"./icons/skills/Skill_TS4_Cross_Stitch.webp"
             },
             "47":{
                 "name":"Entrepreneur",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "High School Years",
                 "icon":"./icons/skills/Skill_TS4_Entrepreneur.webp"
             },
             "48":{
                 "name":"Horse Riding",
                 "max_level": 10,
-                "current_level":0,
                 "pack": "Horse Ranch",
                 "icon":"./icons/skills/Skill_TS4_Horse_Riding.webp"
             },
             "49":{
                 "name":"Nectar Making",
                 "max_level": 5,
-                "current_level":0,
                 "pack": "Horse Ranch",
                 "icon":"./icons/skills/Skill_TS4_Nectar_Making.webp"
             }

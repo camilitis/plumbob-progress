@@ -26,11 +26,11 @@ function WebApp({userId}){
     {
       userInfo ?
         <section className="webapp">
-          {/* <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
+          <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/>
 
-          {/* <Aspirations ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
+          <Aspirations ownedPacks={ownedPacks} userId={userId} packs={packs}/>
 
-          {/* <Skills ownedPacks={ownedPacks} userId={userId} packs={packs}/> */}
+          <Skills ownedPacks={ownedPacks} userId={userId} packs={packs}/>
 
           <Careers ownedPacks={ownedPacks} userId={userId} packs={packs}/>
         </section>

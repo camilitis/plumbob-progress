@@ -1,13 +1,4 @@
-$bg-blue: #B4C8E3;
-$border-green: #41AD51;
-$bg-green: #BCF2AD;
-$skill-green: #74C53C;
-$letter-blue: #1250AE;
-$bg-incomplete: #B3B3B3;
-$bg-title-blue: #98ABC6;
-$bg-grey: #E6E8EB;
-$skill-blue: #F0F3FD;
-$skill-complete: #FFCE56;
+@import "./variables.scss";
 
 .careers-container{
   flex-direction: row;

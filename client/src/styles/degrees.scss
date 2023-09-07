@@ -1,0 +1,28 @@
+@import "./variables.scss";
+
+.degree-level-container{
+  display: grid;
+  grid-template-columns: .5fr 2fr ;
+  grid-template-areas: 
+    "careericon careername";
+}
+
+.degree-icon{
+  height: 65px;
+  background-color: $bg-grey;
+  padding: 5px;
+  border-radius: 5px 0px 0px 5px;
+  margin: 0px;
+  &-pack{
+    width: 25px;
+    height: 25px;
+  }
+}
+.degree-name{
+  grid-area: careername;
+  margin: auto 0px;
+  font-weight: 400;
+  img{
+    margin: 0px 5px;
+  }
+}

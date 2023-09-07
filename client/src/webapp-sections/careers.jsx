@@ -4,7 +4,7 @@ import { Spinner, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem
 import data from '../local-db/TheSimsDB.json';
 import { findPackIcon } from '../js/findPackIcon';
 import { db } from '../firebase-config';
-import { doc, setDoc } from "firebase/firestore";
+import { doc, setDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import AuthDetails from '../auth/authDetails';
 
 function Careers({ownedPacks, userId, packs}){
@@ -35,64 +35,98 @@ function Careers({ownedPacks, userId, packs}){
     }
   }, [ownedPacks, careers])
 
+  const handleCompleteCareer = (careerId ,careerName) => {
+    if(!ownedCareers[careerId].branches){
+      if(!careersProgress[careerName] || !careersProgress[careerName].completed || careersProgress[careerName].completed === false){
+        setDoc(ownedCareersRef, {
+          careers_progress:{
+            [careerName]:{ 
+              completed: true
+            }
+          }
+        }, {merge: true})
+      }else if(careersProgress[careerName].completed === true){
+        setDoc(ownedCareersRef, {
+          careers_progress:{ 
+            [careerName]:{
+              completed: false
+            }
+          }
+        }, {merge: true})
+      }
+    }
+  }
 
-  // const handleCompleteCareer = (careerId) => {
-  //   if(!ownedCareers[careerId].completed && !ownedCareers[careerId].branches){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].completed = true
-  //       return newData
-  //     })
-  //   }else if(ownedCareers[careerId].completed === true && !ownedCareers[careerId].branches){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].completed = false
-  //       return newData
-  //     })
-  //   }
-  // }
 
-  // const handleCompleteBranch = (careerId, branch) => {
-  //   if(!ownedCareers[careerId].branches[branch].completed){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].branches[branch].completed = true
-  //       return newData
-  //     })
-  //   }else if(ownedCareers[careerId].branches[branch].completed === true){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].branches[branch].completed = false
-  //       return newData
-  //     })
-  //   }
+  const handleCompleteBranch = async (careerName, branchName) => {
+    if(careersProgress[careerName] === undefined || (careersProgress[careerName].branches && !careersProgress[careerName].branches.includes(branchName))){
+      setDoc(ownedCareersRef, {
+        careers_progress:{
+          [careerName]:{ 
+            branches: arrayUnion(branchName)
+          }
+        }
+      }, { merge: true })
+    }else if(careersProgress[careerName].branches && careersProgress[careerName].branches.includes(branchName)){
+      await setDoc(ownedCareersRef, {
+        careers_progress:{
+          [careerName]:{ 
+            branches: arrayRemove(branchName)
+          }
+        }
+      }, { merge: true })
+    }
+  }
 
-  //   //TODO TOGGLE!!
+  function handleProgress(careerName){
+    if(careersProgress[careerName] && !careersProgress[careerName].branches){
+      if(careersProgress[careerName].completed === true){
+        return 1
+      }else if(careersProgress[careerName].completed === false){
+        return 0
+      }
+    }else if(careersProgress[careerName] && careersProgress[careerName].branches){
+//TODO careersProgress[careerName].completed === false 
+      if(careersProgress[careerName].branches.length === 0){
+        return 0
+      }else if(careersProgress[careerName].branches.length === 1){
+        return 1
+      }else if(careersProgress[careerName].branches.length === 2){
+        return 2
+      }
 
-  //   if(ownedCareers[careerId].branches[0].completed === true && ownedCareers[careerId].branches[1].completed === true){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].completed = true
-  //       return newData
-  //     })
-  //   }else if(ownedCareers[careerId].branches[0].completed === false || ownedCareers[careerId].branches[1].completed === false){
-  //     setOwnedCareers(prevData => {
-  //       const newData = { ...prevData }
-  //       newData[careerId].completed = false
-  //       return newData
-  //     })
-  //   }
-  // }
+
+    }else{
+      return 0
+    }
+  }
+
+  const [completedCareers, setCompletedCareers] = useState(0)
+
+  useEffect(() => {
+    if(careersProgress){
+      const filteredCareers = Object.entries(careersProgress).filter(([career, progress]) => {
+        return (
+          (progress && progress.completed === true) ||
+          (progress && progress.branches && progress.branches.length === 2)
+        )
+      })
+  
+      setCompletedCareers(filteredCareers.length)
+    }
+  }, [careersProgress])
+
 
   return(
     <>
       {
-      ownedCareers !== null ? 
+      ownedCareers !== null && userInfo && careersProgress ? 
         <section className="aspirations-container">
           <div className="packs-container-title"><p>Careers</p></div>
 
           <div className="container-percentage">
-          <p>Careers Completed: {Object.keys(ownedCareers).filter(careerId => ownedCareers[careerId].completed === true).length}/{Object.keys(ownedCareers).length}</p>
+          <p>
+            Careers Completed: {completedCareers}/{Object.keys(ownedCareers).length}</p>
           </div>
 
           <div className="careers-container">
@@ -103,15 +137,16 @@ function Careers({ownedPacks, userId, packs}){
                 return(
                   <div
                     key={index}
-                    // className={career.completed === true || career.branches && career.branches[1].completed === true && career.branches[0].completed ? "skill-complete career-degree career" : "career-degree career"}
-                    className="career-degree career"
-                    // onClick={() => handleCompleteCareer(careerId)}
+                    className={(careersProgress[career.name] && careersProgress[career.name].completed === true )
+                      ||
+                    (careersProgress[career.name] && careersProgress[career.name].branches && careersProgress[career.name].branches.length === 2)
+                      ? "skill-complete career-degree career" : "career-degree career"}
+                    onClick={() => handleCompleteCareer(careerId, career.name)}
                   >
                     <div className="career-level-container">
                       <img src={career.icon} alt={career.name} 
                         className="career-icon"
                         />
-
                       <div style={{display: "flex", flexDirection: "row"}} className="career-name">
                         <Tooltip key={index} content={career.pack} placement="top">
                           <div>
@@ -125,8 +160,7 @@ function Careers({ownedPacks, userId, packs}){
                       </div>
 
                       <div>
-                        {/* {handleProgress()} */}
-                         / {career.branches ? "2" : "1"}
+                        {handleProgress(career.name)} / {career.branches ? "2" : "1"}
                       </div>
 
                       {
@@ -141,9 +175,9 @@ function Careers({ownedPacks, userId, packs}){
                         </DropdownTrigger>
                         <DropdownMenu aria-label="Static Actions">
                           <DropdownItem key="new">
-                            <div 
-                              // onClick={() => handleCompleteBranch(careerId, 0)}
-                              className={career.branches[0].completed && career.branches[0].completed ? "career-branch skill-complete" : "career-branch"}
+                            <div
+                              onClick={() => handleCompleteBranch(career.name, career.branches[0].name)}
+                              className={careersProgress[career.name] && careersProgress[career.name].branches.includes(career.branches[0].name) ? "career-branch skill-complete" : "career-branch"}
                             >
                             <img src={career.branches[0].icon} alt={career.branches[0].name} className="career-branch-icon"/>
                             <p className="career-branch-name">
@@ -153,8 +187,8 @@ function Careers({ownedPacks, userId, packs}){
                           </DropdownItem>
                           <DropdownItem key="copy">
                             <div
-                              // onClick={() => handleCompleteBranch(careerId, 1)}
-                              className={career.branches[1].completed && career.branches[1].completed ? "career-branch skill-complete" : "career-branch"}
+                              onClick={() => handleCompleteBranch(career.name, career.branches[1].name)}
+                              className={careersProgress[career.name] && careersProgress[career.name].branches.includes(career.branches[1].name) ? "career-branch skill-complete" : "career-branch"}
                             >
                             <img src={career.branches[1].icon} alt={career.branches[1].name} className="career-branch-icon"/>
                             <p className="career-branch-name">
@@ -179,4 +213,4 @@ function Careers({ownedPacks, userId, packs}){
   )
 }
 
-export default Careers;
+export default Careers

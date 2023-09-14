@@ -275,6 +275,14 @@
                 "22":{
                     "name":"Book Nook",
                     "icon":"./icons/packs/kp23_064.png"
+                },
+                "23":{
+                    "name":"Modern Luxe",
+                    "icon":"./icons/packs/kp24_064.webp"
+                },
+                "24":{
+                    "name":"Poolside Splash",
+                    "icon":"./icons/packs/kp25_064.webp"
                 }
             }
         },

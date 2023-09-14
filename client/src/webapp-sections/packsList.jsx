@@ -18,17 +18,6 @@ function PacksList({ownedPacks, userId, packs}){
     }
   }
 
-  // function handleAddAllPacks(){
-  //   const allPackNames = []
-
-  //   packs.forEach((packType) => {
-  //     const packTypeData = packType[1]
-  //     Object.values(packTypeData).forEach((pack) => {
-  //       allPackNames.push(pack.name)
-  //     })
-  //   })
-  // }
-
   return(
     <div className="packs-container">
 

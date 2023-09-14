@@ -95,7 +95,6 @@ function Careers({ownedPacks, userId, packs}){
         return 2
       }
 
-
     }else{
       return 0
     }
@@ -145,7 +144,10 @@ function Careers({ownedPacks, userId, packs}){
                   >
                     <div className="career-level-container">
                       <img src={career.icon} alt={career.name} 
-                        className="career-icon"
+                        className={(careersProgress[career.name] && careersProgress[career.name].completed === true )
+                          ||
+                        (careersProgress[career.name] && careersProgress[career.name].branches && careersProgress[career.name].branches.length === 2)
+                          ? "skill-complete career-icon" : "career-icon"}
                         />
                       <div style={{display: "flex", flexDirection: "row"}} className="career-name">
                         <Tooltip key={index} content={career.pack} placement="top">

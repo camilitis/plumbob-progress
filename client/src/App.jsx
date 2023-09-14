@@ -16,6 +16,10 @@ function App(){
     if(userInfo){setUserId(authUser.uid)}
   }, [userInfo])
 
+  //* If all aspirations are completed in Aspiration_Type => change ClassName
+  //* If remove pack and progress made => remove everything in the DB from pack || function everytime you delete a pack
+  //* skillProgress[skill.name] ? skillProgress[skill.name] : 0         ?? idk
+
   return (
     <>
     {

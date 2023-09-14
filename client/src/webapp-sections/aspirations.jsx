@@ -3,7 +3,7 @@ import { Spinner } from "@nextui-org/react";
 import data from '../local-db/TheSimsDB.json';
 import { findPackIcon } from '../js/findPackIcon';
 import { db } from '../firebase-config';
-import { arrayUnion, doc, updateDoc, arrayRemove } from "firebase/firestore";
+import { arrayUnion, doc, arrayRemove, setDoc } from "firebase/firestore";
 import AuthDetails from '../auth/authDetails';
 
 function Aspirations({ownedPacks, userId, packs}){
@@ -13,15 +13,14 @@ function Aspirations({ownedPacks, userId, packs}){
   const [currentAspiration, setCurrentAspiration] = useState(null)
 
   const { userInfo } = AuthDetails()
-  const [completedAspirations, setCompletedAspirations] = useState([])
+  const [completedAspirations, setCompletedAspirations] = useState({})
   const ownedPacksRef = doc(db, "users", userId)
 
   useEffect(() => {
     setAspirations(Object.values(data["The-Sims4"]["Aspirations_Type"]))
 
-    if(userInfo){setCompletedAspirations(userInfo.completed_aspirations)}
+    if(userInfo){setCompletedAspirations(userInfo.aspirations_progress)}
   }, [userInfo])
-
 
   useEffect(() => {
     if(ownedPacks && aspirations){
@@ -35,6 +34,35 @@ function Aspirations({ownedPacks, userId, packs}){
     }
   }, [ownedPacks])
 
+  const handleCompleteAspirationContent = async (aspirationContentName, aspirationType) => {
+      if(Object.values(completedAspirations).some(aspirations => aspirations.includes(aspirationContentName))){
+        setDoc(ownedPacksRef, {
+          aspirations_progress:{
+            [aspirationType.name]: arrayRemove(aspirationContentName)
+          }
+        }, {merge: true})
+      }else{
+        setDoc(ownedPacksRef, {
+          aspirations_progress:{
+            [aspirationType.name]: arrayUnion(aspirationContentName)
+          }
+        }, {merge: true})
+      }
+  }
+
+  function findAspirationType(aspirationName){
+    const foundAspirationType = Object.keys(ownedAspirations).find(aspirationTypeId => {
+      const aspirations = ownedAspirations[aspirationTypeId].aspirations
+
+      return Object.keys(aspirations).some(aspirationId => {
+        return aspirations[aspirationId].name === aspirationName
+      })
+    })
+
+    if (foundAspirationType) {
+      return ownedAspirations[foundAspirationType]
+    }
+  }
 
   const totalAspirationsLength = ownedAspirations.reduce((total, aspirationObj) => {
     const matchingAspirations = Object.values(aspirationObj.aspirations)
@@ -43,18 +71,22 @@ function Aspirations({ownedPacks, userId, packs}){
     return total + matchingAspirations.length;
   }, 0)
 
+  function getTotalCompletedAspirationsLength(){
+    let totalLength = 0
 
-  const handleCompleteAspirationContent = async (aspirationCompleted) => {
-    if(completedAspirations.includes(aspirationCompleted)){
-      updateDoc(ownedPacksRef, {
-        completed_aspirations: arrayRemove(aspirationCompleted)
-      })
-    }else{
-      updateDoc(ownedPacksRef, {
-        completed_aspirations: arrayUnion(aspirationCompleted)
-      })
+    for (const key in completedAspirations) {
+      if (completedAspirations.hasOwnProperty(key)) {
+        // Check if the property is an array
+        if (Array.isArray(completedAspirations[key])) {
+          // Add the length of the array to the total
+          totalLength += completedAspirations[key].length
+        }
+      }
     }
+
+    return totalLength
   }
+
 
 
   return(
@@ -65,7 +97,7 @@ function Aspirations({ownedPacks, userId, packs}){
           <div className="packs-container-title"><p>Aspirations</p></div>
 
           <div className="container-percentage">
-          Aspirations Completed: {completedAspirations.length}/{totalAspirationsLength}
+          Aspirations Completed: {getTotalCompletedAspirationsLength()}/{totalAspirationsLength}
           </div>
 
           <div className="aspirations-list">
@@ -99,9 +131,9 @@ function Aspirations({ownedPacks, userId, packs}){
 
                     return(
                       <div 
-                        className={completedAspirations.includes(aspirationContent.name) ? "aspirations-content-item aspirations-content-item-complete" : "aspirations-content-item aspirations-content-item-incomplete"}
+                        className={Object.values(completedAspirations).some(aspirations => aspirations.includes(aspirationContent.name)) ? "aspirations-content-item aspirations-content-item-complete" : "aspirations-content-item aspirations-content-item-incomplete"}
                         key={index}
-                        onClick={() => handleCompleteAspirationContent(aspirationContent.name)}
+                        onClick={() => handleCompleteAspirationContent(aspirationContent.name, findAspirationType(aspirationContent.name))}
                       >
                       <div className="aspirations-content-item-packimg">
                         {

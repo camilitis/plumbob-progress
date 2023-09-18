@@ -76,9 +76,7 @@ function Aspirations({ownedPacks, userId, packs}){
 
     for (const key in completedAspirations) {
       if (completedAspirations.hasOwnProperty(key)) {
-        // Check if the property is an array
         if (Array.isArray(completedAspirations[key])) {
-          // Add the length of the array to the total
           totalLength += completedAspirations[key].length
         }
       }
@@ -87,12 +85,10 @@ function Aspirations({ownedPacks, userId, packs}){
     return totalLength
   }
 
-
-
   return(
     <>
     {
-      aspirations !== null ? 
+      aspirations !== null && completedAspirations ? 
         <section className="aspirations-container">
           <div className="packs-container-title"><p>Aspirations</p></div>
 
@@ -102,15 +98,26 @@ function Aspirations({ownedPacks, userId, packs}){
 
           <div className="aspirations-list">
             {ownedAspirations.map((aspirationtype, index) => {
+              const aspirationsInType = aspirationtype.aspirations
+
+              const filteredAspirationNames = []
+
+              Object.values(aspirationsInType).forEach((aspiration) => {
+                if (aspiration.pack === 'Base Game' || ownedPacks.includes(aspiration.pack)) {
+                  filteredAspirationNames.push(aspiration.name)
+                }
+              })
 
               return(
               <div
-                className={currentAspiration === aspirationtype.name ? "aspirations-list-item aspirations-list-item-current" : "aspirations-list-item aspirations-list-item-all"}
+                className={
+                  currentAspiration === aspirationtype.name ? "aspirations-list-item aspirations-list-item-current" :
+                  (completedAspirations[aspirationtype.name] && completedAspirations[aspirationtype.name].length === filteredAspirationNames.length ? "aspirations-list-item aspirations-list-item-completed" : "aspirations-list-item aspirations-list-item-all")
+                }
                 onClick={() => setCurrentAspiration(aspirationtype.name)}
                 key={index}
               >
                 <img src={aspirationtype.icon} alt={aspirationtype.name} />
-
                 <div className="aspirations-list-item-name">
                   {aspirationtype.name}
                 </div>
@@ -128,7 +135,6 @@ function Aspirations({ownedPacks, userId, packs}){
                 return sortedAspirations.map((aspirationContent, index) => {
 
                   if(ownedPacks.includes(aspirationContent.pack) || aspirationContent.pack === "Base Game"){
-
                     return(
                       <div 
                         className={Object.values(completedAspirations).some(aspirations => aspirations.includes(aspirationContent.name)) ? "aspirations-content-item aspirations-content-item-complete" : "aspirations-content-item aspirations-content-item-incomplete"}
@@ -136,9 +142,7 @@ function Aspirations({ownedPacks, userId, packs}){
                         onClick={() => handleCompleteAspirationContent(aspirationContent.name, findAspirationType(aspirationContent.name))}
                       >
                       <div className="aspirations-content-item-packimg">
-                        {
-                          aspirationContent.pack !== "Base Game" ? <img src={findPackIcon(aspirationContent.pack, packs)} alt={aspirationContent.pack}/> : null
-                        }
+                        {aspirationContent.pack !== "Base Game" ? <img src={findPackIcon(aspirationContent.pack, packs)} alt={aspirationContent.pack}/> : null}
                       </div>
   
                       <img src={aspirationContent.icon} alt={aspirationContent.name} />

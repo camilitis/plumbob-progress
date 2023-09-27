@@ -1,4 +1,5 @@
 import "../styles/careers.scss"
+import "../styles/mediaq.scss"
 import { useEffect, useState } from 'react';
 import { Spinner, Tooltip, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
 import data from '../local-db/TheSimsDB.json';
@@ -86,7 +87,6 @@ function Careers({ownedPacks, userId, packs}){
         return 0
       }
     }else if(careersProgress[careerName] && careersProgress[careerName].branches){
-//TODO careersProgress[careerName].completed === false 
       if(careersProgress[careerName].branches.length === 0){
         return 0
       }else if(careersProgress[careerName].branches.length === 1){

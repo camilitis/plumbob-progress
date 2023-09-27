@@ -1,7 +1,6 @@
 import { Link, Button } from "@nextui-org/react";
 
-function Home(){
-
+function Home({authUser, userInfo}){
   return(
     <section className="home">
       <div className="home-header">
@@ -15,7 +14,7 @@ function Home(){
       <p>Dive into an immersive experience where you can effortlessly record and manage your Sim's skills, careers, degrees, and aspirations. Our intuitive interface empowers you to track your Sim's journey with precision, ensuring no milestone goes unnoticed.</p>
 
       <h2>Tailored to Your Journey:</h2>
-      <p>Create a personalized account, select the expansion, game, and stuff packs you own, and witness your virtual world expand in the app. Whether you're a master builder, a social butterfly, or a career-driven player, our tracker adapts to your unique playstyle.</p>
+      <p>Create a personalized account, select the expansion, game, and stuff packs you own, and witness your virtual world expand in the app.</p>
 
       <div className="keyfeatures-container">
         <h2>Key Features:</h2>
@@ -29,32 +28,34 @@ function Home(){
         <p>
           <span>Aspirations:</span> Embark on personal journeys and witness dreams turn into reality.
         </p>
-        <p>
+        {/* <p>
           <span>Challenge Tracking:</span> From Legacy Challenges to Rags to Riches, conquer every challenge systematically.
-        </p>
-        <p>
+        </p> */}
+        {/* <p>
           <span>Pack Integration:</span> Seamlessly incorporates all your owned packs, ensuring no content is left behind.
-        </p>
+        </p> */}
         <p>
           <span>User-Friendly:</span> Intuitive design that makes tracking progress a breeze for players of all levels.
         </p>
       </div>
 
-      <h2>Start Your Journey:</h2>
-      <p>Embrace the power of organization and embark on a new level of gaming fulfillment. Elevate your Sims 4 experience with our Progress Tracker and witness your Sim's accomplishments like never before.</p>
-
       <p>Don't just play The Sims 4 - own it, conquer it, and thrive in it. Join us in shaping the ultimate Sims 4 challenge experience. Get started now!</p>
 
-      <div className="home-links">
-        <Button color="success" variant="flat" radius="full" size="lg" href="/signin" as={Link}>
-          Enter
-        </Button>
-
-
-        <Button variant="flat" radius="full" size="lg" href="/signup" as={Link}>
-          I don't have an account
-        </Button>
-      </div>
+      {
+        authUser && userInfo ? 
+          <Button href="/webapp" as={Link} color="success">
+            Go to app
+          </Button>
+        :
+          <div className="home-links">
+          <Button color="success" variant="flat" radius="full" size="lg" href="/signin" as={Link}>
+            Enter
+          </Button>
+          <Button variant="flat" radius="full" size="lg" href="/signup" as={Link}>
+            I don't have an account
+          </Button>
+        </div>
+      }
     </section>
   )
 }

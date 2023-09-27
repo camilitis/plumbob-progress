@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./mediaq.scss";
 
 .careers-container{
   flex-direction: row;
@@ -62,26 +63,6 @@
     margin: 0px 5px;
   }
 }
-.career-bar{
-  width: 150px;
-  height: 20px;
-  background-color: #ccc;
-  border-radius: 10px;
-  overflow: hidden;
-  grid-area: careerbar;
-  margin: auto;
-}
-.career-level{
-  background-color: $skill-blue;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  border-radius: 0px 5px 5px 0px;
-  font-weight: 400;
-  grid-area: careernumber;
-}
-
 .career-branch-container{
   display: flex;
   flex-direction: column;

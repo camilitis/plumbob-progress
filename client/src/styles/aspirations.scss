@@ -1,0 +1,109 @@
+@import "./variables.scss";
+@import "./mediaq.scss";
+
+.aspirations{
+  &-container{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 5px solid $bg-incomplete;
+    border-radius: 10px;
+    margin: 10px auto;
+  }
+
+  &-list{
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width: 90vw;
+    margin: 10px auto;
+
+    &-item{
+      background-color: $bg-blue;
+      border: 3px solid white;
+      min-width: 150px;
+      height: 90px;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      color: $letter-blue;
+      cursor: pointer;
+      font-size: 14px;
+      img{
+        width: 45px;
+        margin: auto;
+      }
+
+      &:hover{
+        border: 3px solid $border-green;
+        background-color: $bg-green;
+        color: $border-green;
+      }
+
+      &-name{
+        background: rgb(234,240,247);
+        background: linear-gradient(180deg, rgba(234,240,247,1) 0%, rgba(253,253,253,1) 52%);
+        text-align: center;
+        font-weight: 400;
+      }
+    }
+  }
+
+  &-content{
+    display: flex;
+    margin: auto;
+    &-item{
+      width: 150px;
+      height: 100px;
+      border-radius: 7px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: $letter-blue;
+      font-size: 13px;
+      cursor: pointer;
+      margin: 10px;
+      img{
+        width: 45px;
+        margin: auto;
+      }
+      &-packimg{
+        img{
+          position: absolute;
+          width: 25px;
+          margin: 5px;
+        }
+      }
+
+      &:hover{
+        color: $border-green;
+      }
+
+      &-name{
+        background: rgb(234,240,247);
+        background: linear-gradient(180deg, rgba(234,240,247,1) 0%, rgba(253,253,253,1) 52%);
+        text-align: center;
+        font-weight: 400;
+        height: 35px;
+      }
+
+      &-incomplete{
+        background-color: $bg-incomplete;
+      }
+      &-complete{
+        background-color: $skill-complete;
+      }
+    }
+  }
+}
+
+.aspirations-list-item-all{
+  background-color: $bg-incomplete;
+}
+.aspirations-list-item-current{
+  background-color: $bg-green;
+  border: 3px solid $border-green;
+}
+.aspirations-list-item-completed{
+  background: linear-gradient(180deg,rgba(255,206,86,1) 0%, rgba(255,206,86,1) 20%, rgba(255,206,86,1) 80%,rgba(255,206,86,1) 100%);
+}

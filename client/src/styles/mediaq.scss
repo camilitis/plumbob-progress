@@ -1,0 +1,153 @@
+@import "./variables.scss";
+
+@media only screen and (max-width: 1500px) {
+  .career{
+    width: calc(100% / 2.05);
+    height: auto;
+  }
+  .career-level-container{
+    grid-template-columns: .7fr 1.5fr 1.5fr 0.5fr;
+  }
+  .career-icon{
+    height: 80px;
+    padding: 2px;
+  }
+
+  .degree{
+    width: calc(100% / 3.05);
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .packs-list{
+    padding: 4px;
+    &-icon{
+      img{
+        width: 45px;
+        padding: 3px;
+      }
+    }
+  }
+  .aspirations{
+    &-list{
+      margin: 5px auto;
+    }
+  }
+
+  .skills{
+    margin: 1.5px auto;
+    &-icon{
+      &-pack{
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+  .skill-bar {
+    width: 120px;
+  }
+  .career{
+    width: calc(100% / 3.05);
+  }
+  .career-icon{
+    height: 60px;
+  }
+
+  .degree{
+    width: calc(100% / 3.05);
+  }
+
+  .career-level-container{
+    grid-template-columns: .7fr 2.2fr .5fr .8fr;
+  }
+  .career-degree{
+    border: 2px solid $bg-incomplete;
+    &:hover{
+      border: 2px solid $border-green;
+    }
+  }
+  .career-icon{
+    &-pack{
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  .skills{
+    width: calc(100% / 2.02);
+  }
+  .career{
+    width: calc(100% / 2.02);
+  }
+  .degree-icon{
+    height: 0px;
+    padding: 1px;
+  }
+
+}
+
+@media only screen and (max-width: 1000px) {
+  .aspirations-content{
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+
+    &-item{
+      min-width: 160px;
+      height: 120px;
+      margin: 3px;
+      display: flex;
+      flex-direction: column;
+      img{
+        width: 45px;
+        margin: auto;
+      }
+      &-packimg{
+        width: 25px;
+        img{
+          position: relative;
+          width: 20px;
+          height: 20px;
+          margin: 3px;
+        }
+      }
+    }
+  }
+  .aspirations-content-item-name{
+    width: auto;
+    height: 40px;
+    padding: 5px;
+    background-color: darkmagenta;
+  }
+
+//SKILLS
+  .skills{
+    width: 100%;
+    margin: 1.5px auto;
+    grid-template-columns: 0.5fr 1.5fr .5fr .5fr;
+    &-icon{
+      width: 60px;
+      padding: 5px;
+      &-pack{
+        width: 23px;
+        height: 23px;
+      }
+    }
+  }
+  .skills-name{
+    img{
+      margin: 0px 5px;
+    }
+  }
+  .skill-bar {
+    width: 80px;
+    margin: auto 3px;
+  }
+
+  .career, .degree{
+    width: 100%;
+  }
+
+}

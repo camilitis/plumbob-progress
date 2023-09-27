@@ -1,6 +1,6 @@
 import { signOut } from "firebase/auth";
 import { Link, Button } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { auth } from "../firebase-config";
 
 export default function NavBar({authUser, userInfo}){
@@ -10,6 +10,7 @@ export default function NavBar({authUser, userInfo}){
     navigate('/')
     signOut(auth).catch(error => console.log(error))
   }
+
 
   return(
     <header className="navbar">
@@ -26,14 +27,11 @@ export default function NavBar({authUser, userInfo}){
         authUser && userInfo ? 
           <div className="navbar-user">
             <p>{userInfo.username}</p>
-            <Button href="/" as={Link} onClick={userSignOut}>
+            <Button href="/" as={Link} onClick={userSignOut} color="danger">
               Sign Out
             </Button>
           </div>
-        :
-        <Button href="/signin" as={Link} style={{color: "white"}} className="navbar-user">
-          Sign In
-        </Button>
+        : null
       }
     </header>
   )

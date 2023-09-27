@@ -1,3 +1,4 @@
+import "../styles/skills.scss";
 import { useEffect, useState } from 'react';
 import { Spinner, Tooltip } from "@nextui-org/react";
 import data from '../local-db/TheSimsDB.json';

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import AuthDetails from "../auth/authDetails"
 import PacksList from "../webapp-sections/packsList"
-import { Spinner } from '@nextui-org/react'
+import { Spinner, Accordion, AccordionItem } from '@nextui-org/react'
 import data from '../local-db/TheSimsDB.json';
+import "../styles/app.scss"
 
 import Aspirations from "../webapp-sections/aspirations"
 import Skills from "../webapp-sections/skills"
@@ -26,7 +27,11 @@ function WebApp({userId}){
     {
       userInfo ?
         <section className="webapp">
-          <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/>
+          <Accordion variant="splitted" selectionMode="multiple" className="accordion">
+            <AccordionItem key="1" aria-label="My packs" title="My packs" indicator={({ isOpen }) => (isOpen ? "|" : "+")}>
+              <PacksList ownedPacks={ownedPacks} userId={userId} packs={packs}/>
+            </AccordionItem>
+          </Accordion>
 
           <Aspirations ownedPacks={ownedPacks} userId={userId} packs={packs}/>
 

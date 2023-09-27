@@ -1,0 +1,79 @@
+@import "./variables.scss";
+
+.skills-container{
+  flex-direction: row;
+  background-color: $bg-incomplete;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+.skills{
+  width: calc(90vw / 2.9);
+  background-color: white;
+  border-radius: 5px;
+  color: $letter-blue;
+  font-weight: 400;
+  margin: 2px auto;
+  display: grid;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  grid-template-columns: 0.5fr 1.5fr 1.5fr 0.5fr;
+  grid-template-areas: 
+    "skillicon skillname levelbar levelnumber";
+  
+  &-icon{
+    width: 65px;
+    background-color: $bg-grey;
+    padding: 10px;
+    border-radius: 5px 0px 0px 5px;
+    grid-area: skillicon;
+    &-pack{
+      width: 25px;
+      height: 25px;
+    }
+  }
+  &-level{
+    background-color: $skill-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    border-radius: 0px 5px 5px 0px;
+    font-weight: 400;
+    grid-area: levelnumber
+  }
+}
+
+.skills-name{
+  grid-area: skillname;
+  margin: auto 0px;
+  img{
+    margin: 0px 5px;
+  }
+}
+
+.skill-bar {
+  width: 150px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  grid-area: levelbar;
+  margin: auto;
+}
+.fill-bar {
+  height: 100%;
+  transition: width 0.3s;
+}
+
+.skill-incomplete{
+  background-color: $skill-green;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+.skill-complete{
+  background: rgb(255,255,255);
+  background: linear-gradient(180deg,rgba(255,206,86,1) 0%, rgba(255,206,86,1) 20%, rgba(255,206,86,1) 80%,rgba(255,206,86,1) 100%);
+  border: 1px solid white;
+  box-sizing: border-box;
+}

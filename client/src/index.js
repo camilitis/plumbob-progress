@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/app.scss';
+import './styles/mediaq.scss'
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import {NextUIProvider} from "@nextui-org/react";

@@ -1,3 +1,4 @@
+import "../styles/aspirations.scss"
 import { useEffect, useState } from 'react';
 import { Spinner } from "@nextui-org/react";
 import data from '../local-db/TheSimsDB.json';

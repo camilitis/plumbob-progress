@@ -16,9 +16,7 @@ function App(){
     if(userInfo){setUserId(authUser.uid)}
   }, [userInfo])
 
-  //* If all aspirations are completed in Aspiration_Type => change ClassName
   //* If remove pack and progress made => remove everything in the DB from pack || function everytime you delete a pack
-  //* skillProgress[skill.name] ? skillProgress[skill.name] : 0         ?? idk
 
   return (
     <>
@@ -33,7 +31,7 @@ function App(){
             {!authUser ? <Route exact path='/signin' element={<SignIn/>}/> : <Route exact path='/signin' element={<Navigate to='/webapp' />}/>}
             {!authUser ? <Route exact path='/signup' element={<SignUp/>}/> : <Route exact path='/signup' element={<Navigate to='/webapp' />}/>}
 
-            <Route exact path='/home' element={<Home/>} />
+            <Route exact path='/home' element={<Home authUser={authUser} userInfo={userInfo}/>}/>
 
             {authUser && <Route exact path='/webapp' element={<WebApp userId={userId}/>}/>}
 

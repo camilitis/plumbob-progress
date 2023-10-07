@@ -181,6 +181,10 @@
                 "17":{
                     "name":"Paranormal",
                     "icon":"./icons/packs/sp18_064.png"
+                },
+                "18":{
+                    "name":"Home Chef Hustle",
+                    "icon":"./icons/packs/sp19_064.webp"
                 }
             },
             "Kit":{
@@ -1235,6 +1239,12 @@
                         "reward":{
                             "Nectar Know-It-All trait":"These Sims can craft pre-aged Nectar, have an iron bladder when it comes to drinking Nectar, and their negative emotions have less influence on their current mood."
                         }
+                    },
+                    "4":{
+                        "name":"Appliance Wiz",
+                        "icon":"./icons/aspirations/Aspiration_TS4_Appliance_Wiz.webp",
+                        "pack":"Home Chef Hustle",
+                        "type":"Food"
                     }
                 }
             },
@@ -1320,6 +1330,12 @@
                         "reward":{
                             "Thrifty trait":"Allows Sims to regain 10% of the purchase price of any objects bought in Build Mode. The discount won't be applied right away, but will be given in the form of a refund that adds up all purchases over that week."
                         }
+                    },
+                    "2":{
+                        "name":"Market Magnate",
+                        "icon":"../icons/aspirations/Aspiration_TS4_Market_Magnate.webp",
+                        "pack":"Home Chef Hustle",
+                        "type":"Fortune"
                     }
                 }
             },

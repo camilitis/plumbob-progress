@@ -3285,7 +3285,7 @@
             "28":{
                 "name":"Bowling",
                 "max_level": 5,
-                "pack": "City Living",
+                "pack": "Bowling Night",
                 "icon":"./icons/skills/Skill_TS4_Bowling.webp"
             },
             "29":{
